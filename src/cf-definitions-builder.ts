@@ -185,11 +185,12 @@ export default class CFDefinitionsBuilder {
     }
 
     private addEntryTypeAlias = (file: SourceFile, aliasName: string, entryType: string) => {
-        file.addStatements([`export const typeId = '${aliasName}';`]);
+        const typeIdName = moduleTypeIdName(file.getBaseNameWithoutExtension());
+        file.addStatements([`export const ${typeIdName} = '${aliasName}';`]);
         file.addTypeAlias({
             isExported: true,
             name: moduleName(aliasName),
-            type: renderGenericType('CMSEntry', `typeof typeId, ${entryType}`),
+            type: renderGenericType('CMSEntry', `typeof ${typeIdName}, ${entryType}`),
         });
     };
 
@@ -225,7 +226,7 @@ export default class CFDefinitionsBuilder {
             namespaceImport: 'Contentful',
         });
         file.addImportDeclaration({
-            moduleSpecifier: '@common/helpers/contentful/getCMSEntry',
+            moduleSpecifier: '@src/types/contentful/static',
             namedImports: ['CMSEntry'],
         });
     }
