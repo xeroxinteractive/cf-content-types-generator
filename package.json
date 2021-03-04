@@ -1,5 +1,5 @@
 {
-  "name": "cf-content-types-generator",
+  "name": "@xeroxinteractive/cf-content-types-generator",
   "version": "0.0.0",
   "description": "Contentful Content Types (TS Definitions) Generator",
   "author": "Marco Link<marco.link@contentful.com>",
@@ -56,8 +56,6 @@
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc --fix",
     "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
-    "test": "nyc --reporter=text --reporter=lcov --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "test:watch": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --watch",
     "build": "./node_modules/.bin/tsc",
     "version": "oclif-dev readme && git add README.md",
     "presemantic-release": "yarn run build",
@@ -91,5 +89,8 @@
       "@semantic-release/changelog",
       "@semantic-release/github"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/xeroxinteractive"
   }
 }
