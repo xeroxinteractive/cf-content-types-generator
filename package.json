@@ -15,7 +15,7 @@
   "oclif": {
     "bin": "cf-content-types-generator"
   },
-  "repository": "contentful-labs/cf-content-types-generator",
+  "repository": "xeroxinteractive/cf-content-types-generator",
   "files": [
     "/bin",
     "/lib"
