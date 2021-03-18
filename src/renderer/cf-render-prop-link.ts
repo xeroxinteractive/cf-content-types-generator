@@ -8,7 +8,11 @@ const linkContentType = (field: Pick<Field, 'validations'>): string => {
 };
 
 export const renderPropLink = (field: Pick<Field, 'validations' | 'linkType'>) => {
-    return field.linkType === 'Entry'
-        ? linkContentType(field)
-        : 'Contentful.' + field.linkType!;
+    if (field.linkType === 'Entry') {
+        return linkContentType(field);
+    }
+    if (field.linkType === 'Asset') {
+        return 'AssetLink';
+    }
+    return 'Contentful.' + field.linkType!;
 };

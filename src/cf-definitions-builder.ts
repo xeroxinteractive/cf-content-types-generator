@@ -220,6 +220,13 @@ export default class CFDefinitionsBuilder {
             });
         }
 
+        if (type.includes('AssetLink')) {
+            file.addImportDeclaration({
+                moduleSpecifier: '@src/types/contentful/static',
+                namedImports: ['AssetLink'],
+            });
+        }
+
         file.addImportDeclaration({
             moduleSpecifier: '@contentful/rich-text-types',
             namespaceImport: 'CFRichTextTypes',
